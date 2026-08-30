@@ -283,43 +283,48 @@ if (timelineProgress && timelineContainer) {
   window.addEventListener('load', positionTimelineDots);
 }
 
-/* ---------- Mind Bloom: butterflies that fly with the scroll ----------
-   Each butterfly drifts along a gentle arc as its section passes through
-   the viewport. Uses the same redundant driving as the reveal system —
-   a scroll listener plus a timer — because rAF/IO can be throttled. */
+/* ---------- Mind Bloom: one butterfly, flying the whole page ----------
+   Fixed to the viewport and driven by page scroll progress: it drifts down
+   the screen while weaving side to side, so it reads as flying alongside you
+   from the hero to the footer. setTimeout, not rAF — rAF is throttled to zero
+   in background tabs and would freeze it mid-flight. */
 (() => {
-  const flies = document.querySelectorAll('.mb-fly[data-fly]');
-  if (!flies.length) return;
+  const fly = document.getElementById('mbFlyer');
+  if (!fly) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  // Give each one its own drift so they don't move in lockstep
-  const cfg = [...flies].map((el, i) => ({
-    el,
-    ampX: (i % 2 === 0 ? 1 : -1) * (70 + (i % 3) * 34),  // px travelled sideways
-    ampY: -(46 + (i % 4) * 22),                          // px travelled upward
-    tilt: (i % 2 === 0 ? 1 : -1) * 14,                   // degrees of banking
-    phase: (i * 0.17) % 1
-  }));
 
   let ticking = false;
 
   const update = () => {
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-    for (const f of cfg) {
-      const r = f.el.getBoundingClientRect();
-      if (r.bottom < -200 || r.top > vh + 200) continue;   // off-screen, skip
-      // 0 when entering the bottom of the viewport, 1 when leaving the top
-      let p = 1 - (r.top + r.height * 0.5) / (vh + r.height);
-      p = Math.min(Math.max(p, 0), 1);
-      const eased = Math.sin((p + f.phase) * Math.PI);      // arc out and back
-      f.el.style.setProperty('--fx', (f.ampX * eased).toFixed(1) + 'px');
-      f.el.style.setProperty('--fy', (f.ampY * p).toFixed(1) + 'px');
-      f.el.style.setProperty('--fr', (f.tilt * eased).toFixed(1) + 'deg');
-    }
+    const doc = document.documentElement;
+    const max = (doc.scrollHeight - window.innerHeight) || 1;
+    const p = Math.min(Math.max(window.scrollY / max, 0), 1);   // 0 -> 1 down the page
+
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const size = fly.offsetWidth || 80;
+
+    // Weave across the width, but biased toward the margins: the easing below
+    // pushes the position toward the extremes so the butterfly lingers in the
+    // gutters and crosses the text column quickly instead of sitting on a line.
+    const weave = Math.sin(p * Math.PI * 3);
+    const edged = Math.sign(weave) * Math.pow(Math.abs(weave), 0.45);
+    const margin = Math.min(64, vw * 0.05);
+    const usable = vw - size - margin * 2;
+    const x = margin + (0.5 + 0.5 * edged) * usable;
+
+    // ride from just under the header down to the lower third, then settle
+    const y = vh * (0.18 + 0.62 * Math.sin(p * Math.PI));
+
+    // bank into the direction of travel
+    const dir = Math.cos(p * Math.PI * 3);
+    const rot = dir * 16;
+
+    fly.style.setProperty('--fx', x.toFixed(1) + 'px');
+    fly.style.setProperty('--fy', y.toFixed(1) + 'px');
+    fly.style.setProperty('--fr', rot.toFixed(1) + 'deg');
   };
 
-  /* setTimeout, not requestAnimationFrame: rAF is throttled to zero in
-     background/inactive tabs, which would freeze the butterflies mid-flight. */
   const onScroll = () => {
     if (ticking) return;
     ticking = true;

@@ -1006,45 +1006,18 @@ button { font-family: inherit; }
   flex-direction: column;
   border-radius: 12px;
   padding: 28px;
+  overflow: hidden;
   color: #1a1a1a;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
-/* Folded-corner cards.
-   Previously a PNG stretched with `background-size:100% 100%`, which distorted the
-   fold on every card that wasn't the source's 820x284 and went soft on retina.
-   Drawn with clip-path instead: fixed-size fold, crisp at any size or DPI. */
-.card-fold,
-.stat-card--pink,
-.highlight-card {
-  --fold: 18px;
-  --fold-band: 40px;
-  overflow: visible;
-  clip-path: polygon(
-    0 0, 100% 0,
-    100% calc(100% - var(--fold)),
-    calc(100% - var(--fold)) 100%,
-    0 100%
-  );
-}
-.card-fold::after,
-.stat-card--pink::after,
-.highlight-card::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: var(--fold-band);
-  height: var(--fold-band);
-  background: var(--fold-color, rgba(0, 0, 0, 0.2));
-  clip-path: polygon(100% 0, 0 100%, 100% 100%);
-}
-.card-fold > *,
-.stat-card--pink > *,
-.highlight-card > * { position: relative; z-index: 1; }
-
+/* Folded-corner cards — the artwork from the design. */
 .stat-card--pink {
-  background: var(--devora-pink);
-  --fold-color: var(--devora-pink-fold);
+  background-image: url('../assets/images/devora/card-pink.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .stat-card-num {
@@ -1160,10 +1133,12 @@ button { font-family: inherit; }
   position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--devora-yellow);
-  --fold-color: var(--devora-yellow-fold);
+  background-image: url('../assets/images/devora/card-yellow.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   border-radius: 12px;
   padding: 28px;
+  overflow: hidden;
   color: #1a1a1a;
 }
 
@@ -1486,15 +1461,15 @@ button { font-family: inherit; }
 .case-study--match .flow-step,
 .case-study--mindbloom .flow-step { position: relative; }
 .case-study--match .flow-step + .flow-step,
-.case-study--mindbloom .flow-step + .flow-step { margin-top: 8px; }
+.case-study--mindbloom .flow-step + .flow-step { margin-top: 4px; }
 .case-study--match .flow-step:nth-child(1),
 .case-study--mindbloom .flow-step:nth-child(1) { margin-left: 0; }
 .case-study--match .flow-step:nth-child(2),
 .case-study--mindbloom .flow-step:nth-child(2) { margin-left: 22%; }
 .case-study--match .flow-step:nth-child(3),
-.case-study--mindbloom .flow-step:nth-child(3) { margin-left: 44%; }
+.case-study--mindbloom .flow-step:nth-child(3) { margin-left: 45%; }
 .case-study--match .flow-step:nth-child(4),
-.case-study--mindbloom .flow-step:nth-child(4) { margin-left: 70%; }
+.case-study--mindbloom .flow-step:nth-child(4) { margin-left: 74%; }
 .case-study--match .flow-pill,
 .case-study--mindbloom .flow-pill {
   background: rgba(255, 255, 255, 0.08);
@@ -1507,12 +1482,12 @@ button { font-family: inherit; }
 .case-study--mindbloom .flow-step:not(:first-child)::before {
   content: "";
   position: absolute;
-  left: -40px;
-  top: -30px;
-  width: 44px;
-  height: 46px;
+  left: -60px;
+  top: 0;
+  width: 52px;
+  height: 28px;
   background: center / contain no-repeat
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 46' fill='none' stroke='%23a3a3a3' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 3 V22 Q9 32 19 32 H37'/%3E%3Cpath d='M31 26 L38 32 L31 38'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 28' fill='none'%3E%3Cpath d='M1 0 V22 H44' stroke='%238c8c8c' stroke-width='1.6'/%3E%3Cpath d='M44 17.5 L52 22 L44 26.5 Z' fill='%238c8c8c'/%3E%3C/svg%3E");
 }
 
 /* Impact — oversized metric numerals */
@@ -2154,45 +2129,36 @@ button:focus-visible {
   font-weight: 500;
 }
 
-/* ---------- Butterflies ----------
-   Scroll drives --fx/--fy/--fr (set in script.js); the inner <img>
-   carries a continuous bob so it still reads as flight while static. */
-.case-grid,
-.case-shot { position: relative; }
-
-.mb-fly {
-  position: absolute;
-  width: clamp(52px, 5.6vw, 96px);
+/* ---------- Butterfly ----------
+   A single butterfly, fixed to the viewport, that flies from the top of the
+   page to the bottom as you scroll. --fx/--fy/--fr are set in script.js. */
+.mb-flyer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: clamp(54px, 5.4vw, 92px);
+  z-index: 15;
   pointer-events: none;
-  z-index: 4;
   transform: translate3d(var(--fx, 0px), var(--fy, 0px), 0) rotate(var(--fr, 0deg));
   will-change: transform;
 }
-.mb-fly img {
+.mb-flyer img {
   width: 100%;
   height: auto;
   display: block;
-  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.5));
   animation: mb-bob 3.4s ease-in-out infinite;
 }
 @keyframes mb-bob {
-  0%, 100% { transform: translateY(0) rotate(-4deg) scale(1); }
-  50%      { transform: translateY(-12px) rotate(4deg) scale(1.03); }
+  0%, 100% { transform: translateY(0) rotate(-5deg) scale(1); }
+  50%      { transform: translateY(-10px) rotate(5deg) scale(1.04); }
 }
-
-/* placements, mirroring where the flora sits in the design */
-.mb-fly--hero       { right: 3%;  top: 46%; }
-.mb-fly--label      { left: 0;    top: 52px; }
-.mb-fly--label.mb-fly--low { top: 132px; }
-.mb-fly--shot-left  { left: -2%;  top: 12%; }
 
 @media (max-width: 860px) {
   .case-study--mindbloom .case-meta--4 { grid-template-columns: 1fr; }
-  .mb-fly { width: 54px; }
-  .mb-fly--label, .mb-fly--label.mb-fly--low { position: static; display: block; margin-bottom: 10px; }
+  .mb-flyer { width: 52px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mb-fly img { animation: none; }
-  .mb-fly { transform: none; }
+  .mb-flyer { display: none; }
 }
