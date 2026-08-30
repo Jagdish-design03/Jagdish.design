@@ -195,14 +195,17 @@ if (workSection && workCards.length) {
     const stage = Math.floor(progress * workCards.length);
 
     workCards.forEach((card, i) => card.classList.toggle('active', i === stage));
-    workListItems.forEach((li, i) => li.classList.toggle('active', i === stage));
+    // Cards outnumber categories (two mobile apps), so each card names its own
+    // category via data-cat rather than relying on index === index.
+    const active = workCards[stage];
+    const cat = active && active.dataset.cat !== undefined ? Number(active.dataset.cat) : stage;
+    workListItems.forEach((li, i) => li.classList.toggle('active', i === cat));
   };
 
   window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateWork);
-      ticking = true;
-    }
+    if (ticking) return;
+    ticking = true;
+    setTimeout(updateWork, 16);   // not rAF: throttled tabs would freeze the stack
   }, { passive: true });
 
   window.addEventListener('resize', updateWork);
@@ -264,10 +267,9 @@ if (timelineProgress && timelineContainer) {
   };
 
   window.addEventListener('scroll', () => {
-    if (!tlTicking) {
-      requestAnimationFrame(updateTimeline);
-      tlTicking = true;
-    }
+    if (tlTicking) return;
+    tlTicking = true;
+    setTimeout(updateTimeline, 16);
   }, { passive: true });
 
   window.addEventListener('resize', () => {
@@ -280,3 +282,53 @@ if (timelineProgress && timelineContainer) {
   // Fonts/images loading can shift heading positions after first paint
   window.addEventListener('load', positionTimelineDots);
 }
+
+/* ---------- Mind Bloom: butterflies that fly with the scroll ----------
+   Each butterfly drifts along a gentle arc as its section passes through
+   the viewport. Uses the same redundant driving as the reveal system —
+   a scroll listener plus a timer — because rAF/IO can be throttled. */
+(() => {
+  const flies = document.querySelectorAll('.mb-fly[data-fly]');
+  if (!flies.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Give each one its own drift so they don't move in lockstep
+  const cfg = [...flies].map((el, i) => ({
+    el,
+    ampX: (i % 2 === 0 ? 1 : -1) * (70 + (i % 3) * 34),  // px travelled sideways
+    ampY: -(46 + (i % 4) * 22),                          // px travelled upward
+    tilt: (i % 2 === 0 ? 1 : -1) * 14,                   // degrees of banking
+    phase: (i * 0.17) % 1
+  }));
+
+  let ticking = false;
+
+  const update = () => {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    for (const f of cfg) {
+      const r = f.el.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) continue;   // off-screen, skip
+      // 0 when entering the bottom of the viewport, 1 when leaving the top
+      let p = 1 - (r.top + r.height * 0.5) / (vh + r.height);
+      p = Math.min(Math.max(p, 0), 1);
+      const eased = Math.sin((p + f.phase) * Math.PI);      // arc out and back
+      f.el.style.setProperty('--fx', (f.ampX * eased).toFixed(1) + 'px');
+      f.el.style.setProperty('--fy', (f.ampY * p).toFixed(1) + 'px');
+      f.el.style.setProperty('--fr', (f.tilt * eased).toFixed(1) + 'deg');
+    }
+  };
+
+  /* setTimeout, not requestAnimationFrame: rAF is throttled to zero in
+     background/inactive tabs, which would freeze the butterflies mid-flight. */
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    setTimeout(() => { ticking = false; update(); }, 16);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  window.addEventListener('load', update);
+  update();
+  setTimeout(update, 300);
+})();

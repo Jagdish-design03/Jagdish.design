@@ -392,7 +392,7 @@ button { font-family: inherit; }
 .work {
   position: relative;
   background: var(--bg-page);
-  height: 320vh;
+  height: 420vh;              /* ~105vh of dwell per work card */
 }
 
 .work-sticky {
@@ -1481,21 +1481,30 @@ button { font-family: inherit; }
 }
 
 /* Inside Match — staircase flow with elbow connectors */
-.case-study--match .flow-diagram { display: block; position: relative; margin-top: 14px; }
-.case-study--match .flow-step { position: relative; }
-.case-study--match .flow-step + .flow-step { margin-top: 8px; }
-.case-study--match .flow-step:nth-child(1) { margin-left: 0; }
-.case-study--match .flow-step:nth-child(2) { margin-left: 22%; }
-.case-study--match .flow-step:nth-child(3) { margin-left: 44%; }
-.case-study--match .flow-step:nth-child(4) { margin-left: 70%; }
-.case-study--match .flow-pill {
+.case-study--match .flow-diagram,
+.case-study--mindbloom .flow-diagram { display: block; position: relative; margin-top: 14px; }
+.case-study--match .flow-step,
+.case-study--mindbloom .flow-step { position: relative; }
+.case-study--match .flow-step + .flow-step,
+.case-study--mindbloom .flow-step + .flow-step { margin-top: 8px; }
+.case-study--match .flow-step:nth-child(1),
+.case-study--mindbloom .flow-step:nth-child(1) { margin-left: 0; }
+.case-study--match .flow-step:nth-child(2),
+.case-study--mindbloom .flow-step:nth-child(2) { margin-left: 22%; }
+.case-study--match .flow-step:nth-child(3),
+.case-study--mindbloom .flow-step:nth-child(3) { margin-left: 44%; }
+.case-study--match .flow-step:nth-child(4),
+.case-study--mindbloom .flow-step:nth-child(4) { margin-left: 70%; }
+.case-study--match .flow-pill,
+.case-study--mindbloom .flow-pill {
   background: rgba(255, 255, 255, 0.08);
   padding: 13px 22px;
   font-size: 1.125rem;
   font-weight: 500;
 }
 .case-study--match .flow-pill--accent { background: var(--match-accent); font-weight: 500; }
-.case-study--match .flow-step:not(:first-child)::before {
+.case-study--match .flow-step:not(:first-child)::before,
+.case-study--mindbloom .flow-step:not(:first-child)::before {
   content: "";
   position: absolute;
   left: -40px;
@@ -2067,4 +2076,123 @@ button:focus-visible {
   .mar-media:hover > img,
   .mar-row-media:hover img,
   .work-card.active:hover .work-card-shot { transform: none; }
+}
+
+/* =====================================================
+   Mind Bloom case study
+===================================================== */
+
+:root {
+  --mb-pink: #F5588D;
+  --mb-lilac: #B08BE8;
+  --mb-sky: #7FC4F5;
+  --mb-shot-bg: #1B1430;
+}
+
+.case-study--mindbloom .case-logo--mindbloom {
+  width: auto;
+  height: clamp(30px, 3vw, 40px);
+  border-radius: 0;
+  object-fit: contain;
+  object-position: left center;
+}
+.case-study--mindbloom .case-hero-tagline strong { color: var(--text-primary); font-weight: 500; }
+
+/* Shots are full-bleed painted scenes — no frame padding */
+.case-study--mindbloom .case-shot,
+.case-study--mindbloom .case-shot--hero {
+  padding: 0;
+  background: transparent;
+  border-radius: 16px;
+  overflow: visible;              /* butterflies fly past the edge */
+}
+.case-study--mindbloom .case-shot > img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+.case-study--mindbloom .case-meta--4 { grid-template-columns: repeat(4, 1fr); gap: clamp(24px, 3vw, 48px); }
+.case-study--mindbloom .case-tag { margin-top: 20px; }
+.case-study--mindbloom .case-tag + .case-block { margin-top: -18px; }
+
+/* Dark stat tiles: pink numerals, like Match's salmon ones */
+.case-study--mindbloom .stat-card--dark .stat-card-num {
+  color: var(--mb-pink);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
+}
+.case-study--mindbloom .stat-card--dark p { color: var(--text-primary); }
+
+.case-study--mindbloom .compare-row--head {
+  font-weight: 400;
+  font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.375rem);
+  color: var(--text-primary);
+  background: #2A1F45;
+}
+.case-study--mindbloom .compare-row:not(.compare-row--head) { color: var(--text-primary); font-size: 1rem; }
+
+.case-study--mindbloom .note-card--maroon {
+  background: #3A2036;
+  font-size: clamp(1.1rem, 0.95rem + 0.7vw, 1.4rem);
+  font-weight: 500;
+  line-height: 1.42;
+}
+.case-study--mindbloom .note-card--olive { background: #2A2440; font-size: 1.125rem; line-height: 1.55; }
+.case-study--mindbloom .note-card--olive .note-card-lead { color: var(--mb-lilac); }
+
+.case-study--mindbloom .numbered-card .num { color: var(--mb-lilac); }
+.case-study--mindbloom .flow-pill { background: rgba(255, 255, 255, 0.08); }
+.case-study--mindbloom .flow-pill--accent { background: var(--mb-pink); }
+
+.case-study--mindbloom .impact-num--up { color: var(--mb-sky); }
+.case-study--mindbloom .impact-num--down { color: var(--mb-pink); }
+
+.case-study--mindbloom .case-quote--mindbloom {
+  border-left-color: var(--mb-pink);
+  background: rgba(245, 88, 141, 0.12);
+  font-weight: 500;
+}
+
+/* ---------- Butterflies ----------
+   Scroll drives --fx/--fy/--fr (set in script.js); the inner <img>
+   carries a continuous bob so it still reads as flight while static. */
+.case-grid,
+.case-shot { position: relative; }
+
+.mb-fly {
+  position: absolute;
+  width: clamp(52px, 5.6vw, 96px);
+  pointer-events: none;
+  z-index: 4;
+  transform: translate3d(var(--fx, 0px), var(--fy, 0px), 0) rotate(var(--fr, 0deg));
+  will-change: transform;
+}
+.mb-fly img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+  animation: mb-bob 3.4s ease-in-out infinite;
+}
+@keyframes mb-bob {
+  0%, 100% { transform: translateY(0) rotate(-4deg) scale(1); }
+  50%      { transform: translateY(-12px) rotate(4deg) scale(1.03); }
+}
+
+/* placements, mirroring where the flora sits in the design */
+.mb-fly--hero       { right: 3%;  top: 46%; }
+.mb-fly--label      { left: 0;    top: 52px; }
+.mb-fly--label.mb-fly--low { top: 132px; }
+.mb-fly--shot-left  { left: -2%;  top: 12%; }
+
+@media (max-width: 860px) {
+  .case-study--mindbloom .case-meta--4 { grid-template-columns: 1fr; }
+  .mb-fly { width: 54px; }
+  .mb-fly--label, .mb-fly--label.mb-fly--low { position: static; display: block; margin-bottom: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mb-fly img { animation: none; }
+  .mb-fly { transform: none; }
 }
