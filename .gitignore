@@ -1,0 +1,18 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local tooling
+.claude/
+
+# Design sources & raw Figma exports.
+# These are NOT part of the deployed site (~103 MB of the folder).
+# They stay on your machine — delete these lines if you want them in the repo.
+/*.png
+/*.jpg
+/*.jpeg
+/*.svg
+/*.pdf
+/UI icon/
+/vuesax/
