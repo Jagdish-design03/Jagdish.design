@@ -585,7 +585,8 @@ button { font-family: inherit; }
 .journey-media-right { justify-content: flex-end; }
 
 /* ---------- CTA ---------- */
-.cta { background: var(--bg-page); padding-bottom: clamp(64px, 8vw, 120px); }
+/* same trailing space on every page — case studies set the same 48px below */
+.cta { background: var(--bg-page); padding-bottom: 48px; }
 
 .cta-card {
   background: rgba(0, 0, 0, 0.1);
