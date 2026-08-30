@@ -284,56 +284,55 @@ if (timelineProgress && timelineContainer) {
 }
 
 /* ---------- Mind Bloom: one butterfly, flying the whole page ----------
-   Fixed to the viewport and driven by page scroll progress: it drifts down
-   the screen while weaving side to side, so it reads as flying alongside you
-   from the hero to the footer. setTimeout, not rAF — rAF is throttled to zero
-   in background tabs and would freeze it mid-flight. */
+   Scroll sets a TARGET; a rAF loop eases the butterfly toward it, so the
+   motion trails and settles instead of snapping to each scroll step. A slow
+   time-based drift keeps it alive when the page is still.
+   rAF is right here (unlike the reveal system): if a background tab throttles
+   it the butterfly simply pauses, which is the desired behaviour anyway. */
 (() => {
   const fly = document.getElementById('mbFlyer');
   if (!fly) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  let ticking = false;
+  let tx = 0, ty = 0, tr = 0;      // target
+  let cx = null, cy = 0, cr = 0;   // current (null until first placement)
 
-  const update = () => {
+  const computeTarget = (t) => {
     const doc = document.documentElement;
     const max = (doc.scrollHeight - window.innerHeight) || 1;
-    const p = Math.min(Math.max(window.scrollY / max, 0), 1);   // 0 -> 1 down the page
+    const p = Math.min(Math.max(window.scrollY / max, 0), 1);
 
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
+    const vw = window.innerWidth, vh = window.innerHeight;
     const size = fly.offsetWidth || 80;
 
-    // Weave across the width, but biased toward the margins: the easing below
-    // pushes the position toward the extremes so the butterfly lingers in the
-    // gutters and crosses the text column quickly instead of sitting on a line.
+    // Weave across the page, biased to the margins so it crosses the text
+    // column quickly rather than resting on a line of copy.
     const weave = Math.sin(p * Math.PI * 3);
     const edged = Math.sign(weave) * Math.pow(Math.abs(weave), 0.45);
-    const margin = Math.min(64, vw * 0.05);
-    const usable = vw - size - margin * 2;
-    const x = margin + (0.5 + 0.5 * edged) * usable;
+    const margin = Math.min(72, vw * 0.05);
+    const usable = Math.max(vw - size - margin * 2, 0);
 
-    // ride from just under the header down to the lower third, then settle
-    const y = vh * (0.18 + 0.62 * Math.sin(p * Math.PI));
+    // gentle idle drift so it never looks frozen between scrolls
+    const driftX = Math.sin(t / 2600) * 26;
+    const driftY = Math.cos(t / 1900) * 18;
 
-    // bank into the direction of travel
-    const dir = Math.cos(p * Math.PI * 3);
-    const rot = dir * 16;
-
-    fly.style.setProperty('--fx', x.toFixed(1) + 'px');
-    fly.style.setProperty('--fy', y.toFixed(1) + 'px');
-    fly.style.setProperty('--fr', rot.toFixed(1) + 'deg');
+    tx = margin + (0.5 + 0.5 * edged) * usable + driftX;
+    ty = vh * (0.16 + 0.6 * Math.sin(p * Math.PI)) + driftY;
+    tr = Math.cos(p * Math.PI * 3) * 15 + Math.sin(t / 2200) * 4;
   };
 
-  const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    setTimeout(() => { ticking = false; update(); }, 16);
+  const tick = (t) => {
+    computeTarget(t || 0);
+    if (cx === null) { cx = tx; cy = ty; cr = tr; }
+    // critically-damped-ish easing: fast enough to keep up, slow enough to trail
+    cx += (tx - cx) * 0.055;
+    cy += (ty - cy) * 0.055;
+    cr += (tr - cr) * 0.08;
+    fly.style.setProperty('--fx', cx.toFixed(2) + 'px');
+    fly.style.setProperty('--fy', cy.toFixed(2) + 'px');
+    fly.style.setProperty('--fr', cr.toFixed(2) + 'deg');
+    requestAnimationFrame(tick);
   };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  window.addEventListener('load', update);
-  update();
-  setTimeout(update, 300);
+  requestAnimationFrame(tick);
 })();
