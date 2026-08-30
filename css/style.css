@@ -2188,3 +2188,58 @@ button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .mb-flyer { display: none; }
 }
+
+/* =====================================================
+   Journey characters — a single entrance each
+   Each one performs a gesture that matches its section, plays exactly
+   ONCE (the reveal observer adds .is-in and then unobserves), and ends
+   on a neutral transform so nothing keeps moving while you read.
+===================================================== */
+
+/* the wrapper only handles the fade; the character itself does the moving */
+.has-reveal .journey-media[data-reveal] { transform: none; }
+.journey-media img { transform-origin: 50% 100%; }
+
+/* "My Journey to Design" — walks in, three steps, and settles */
+.journey-media--walk.is-in img {
+  animation: jm-walk 1.5s cubic-bezier(0.33, 0.9, 0.4, 1) both;
+}
+@keyframes jm-walk {
+  0%   { transform: translateX(-52px) rotate(-3.5deg); }
+  22%  { transform: translateX(-36px) translateY(-8px) rotate(2.5deg); }
+  42%  { transform: translateX(-23px) translateY(0)    rotate(-2.5deg); }
+  62%  { transform: translateX(-12px) translateY(-7px) rotate(2deg); }
+  82%  { transform: translateX(-3px)  translateY(0)    rotate(-1deg); }
+  100% { transform: none; }
+}
+
+/* "What I Focus On" — drops in and settles down to work */
+.journey-media--sit.is-in img {
+  animation: jm-sit 1.25s cubic-bezier(0.3, 1.2, 0.5, 1) both;
+}
+@keyframes jm-sit {
+  0%   { transform: translateY(-30px) scale(1.03); }
+  50%  { transform: translateY(0) scaleY(0.93) scaleX(1.05); }
+  72%  { transform: translateY(-7px) scaleY(1.03) scaleX(0.98); }
+  88%  { transform: translateY(0) scaleY(0.98) scaleX(1.01); }
+  100% { transform: none; }
+}
+
+/* "Approach" — rises, then points once toward the text */
+.journey-media--point.is-in img {
+  animation: jm-point 1.45s cubic-bezier(0.25, 0.9, 0.4, 1) both;
+}
+@keyframes jm-point {
+  0%   { transform: translateY(22px) rotate(-5deg); }
+  38%  { transform: translateY(0) rotate(0deg); }
+  56%  { transform: translateY(-2px) translateX(9px) rotate(5deg); }
+  72%  { transform: translateY(0) translateX(3px) rotate(1.5deg); }
+  86%  { transform: translateX(1px) rotate(-1deg); }
+  100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-media--walk.is-in img,
+  .journey-media--sit.is-in img,
+  .journey-media--point.is-in img { animation: none; }
+}
