@@ -2280,10 +2280,23 @@ button:focus-visible {
   .nav-toggle.open span:nth-child(2) { opacity: 0; }
   .nav-toggle.open span:nth-child(3) { transform: translateY(0) rotate(-45deg); }
 
+  /* Two columns: the pills span the full width, the two social icons share
+     the last row side by side instead of stacking left-aligned. */
+  .nav-right.open {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 8px;
+  }
   .nav-right { top: calc(100% + 10px); padding: 12px; gap: 8px; border-radius: 20px; }
-  .nav-pill { height: 48px; font-size: 1rem; justify-content: center; }
+  .nav-right .nav-pill { grid-column: 1 / -1; height: 48px; font-size: 1rem; justify-content: center; }
   .nav-right .divider { display: none; }
-  .nav-right .icon-link { width: 40px; height: 40px; margin: 0; }
+  .nav-right .icon-link {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    justify-self: center;
+    align-self: center;
+  }
   .nav-right .icon-link + .icon-link { margin-left: 0; }
 
   /* ---- home hero ---- */
