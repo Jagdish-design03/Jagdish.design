@@ -112,6 +112,12 @@ if (typedWordEl && heroHeadingEl) {
   const prefixText = heroHeadingEl.querySelector('.dim').textContent;
 
   const lockHeadingWidth = () => {
+    // On narrow screens the heading wraps, so pinning it to the width of the
+    // longest phrase would push it off-screen. Let it flow instead.
+    if (window.matchMedia('(max-width: 860px)').matches) {
+      heroHeadingEl.style.width = '';
+      return;
+    }
     const clone = heroHeadingEl.cloneNode(false);
     clone.style.position = 'absolute';
     clone.style.visibility = 'hidden';

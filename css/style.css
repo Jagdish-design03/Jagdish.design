@@ -2244,3 +2244,220 @@ button:focus-visible {
   .journey-media--sit.is-in img,
   .journey-media--point.is-in img { animation: none; }
 }
+
+
+/* =====================================================
+   MOBILE - one consolidated pass (<= 860px)
+   Appended last so it wins over the desktop rules above.
+===================================================== */
+
+@media (max-width: 860px) {
+
+  html, body { overflow-x: hidden; }
+  .container { padding-inline: 20px; }
+
+  /* ---- nav ---- */
+  .navbar { height: auto; min-height: 68px; padding: 10px 14px 10px 10px; }
+  .avatar-wrap, .avatar { width: 44px; height: 44px; }
+  .nav-left { gap: 12px; }
+  .logo-name { font-size: 1rem; }
+
+  .nav-toggle {
+    display: flex; position: relative;
+    width: 44px; height: 44px; gap: 0;
+    align-items: center; justify-content: center;
+  }
+  /* absolutely-placed bars so the X actually crosses */
+  .nav-toggle span {
+    position: absolute; left: 11px;
+    width: 22px; height: 2px;
+    transition: transform 0.28s ease, opacity 0.2s ease;
+  }
+  .nav-toggle span:nth-child(1) { transform: translateY(-7px); }
+  .nav-toggle span:nth-child(2) { transform: translateY(0); }
+  .nav-toggle span:nth-child(3) { transform: translateY(7px); }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+
+  .nav-right { top: calc(100% + 10px); padding: 12px; gap: 8px; border-radius: 20px; }
+  .nav-pill { height: 48px; font-size: 1rem; justify-content: center; }
+  .nav-right .divider { display: none; }
+  .nav-right .icon-link { width: 40px; height: 40px; margin: 0; }
+  .nav-right .icon-link + .icon-link { margin-left: 0; }
+
+  /* ---- home hero ---- */
+  .hero { height: auto; min-height: 0; padding-bottom: 40px; }
+  .hero-content { margin-top: 48px; padding-inline: 4px; }
+  .hero-heading {
+    width: auto !important;
+    white-space: normal;
+    text-align: center;
+    font-size: clamp(1.6rem, 7.2vw, 2.3rem);
+    line-height: 1.25;
+  }
+  .hero-heading .bright { margin-left: 0.2em; }
+  .hero-sub { margin-top: 28px; font-size: 1rem; }
+  .scroll-indicator { margin-top: 32px; }
+
+  .marquee-track span { font-size: 1.5rem; }
+  .marquee-track { gap: 1.75rem; }
+
+  /* ---- Selected Work: no scroll-jack, just stack ---- */
+  .work { height: auto; padding-block: 56px 8px; }
+  .work-sticky { position: static; height: auto; display: block; overflow: visible; }
+  .work-grid { grid-template-columns: 1fr; gap: 24px; }
+  .work-list { margin-top: 20px; gap: 12px; }
+  .work-list li { font-size: 1rem; color: var(--text-primary); }
+  .work-card-stack {
+    position: static; aspect-ratio: auto; max-height: none;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .work-card {
+    position: static; opacity: 1; transform: none; pointer-events: auto;
+    aspect-ratio: auto; padding: 22px 20px 0; background-size: cover;
+  }
+  .work-card-title { font-size: 1.35rem; }
+  .work-card-desc { max-width: none; font-size: 0.95rem; }
+  .work-card-shot { max-width: 100%; margin-top: 20px; }
+
+  /* ---- Journey ---- */
+  .journey { padding-block: 48px; }
+  .journey-grid { row-gap: 36px; }
+  /* the scroll-linked timeline rail belongs to the two-column layout only */
+  .timeline-line, .timeline-progress, .timeline-dot { display: none; }
+
+  /* In two columns the sitting character sits beside its text, so in source
+     order it trails it. Stacked, that orphans it next to the next character —
+     so interleave each character directly above the text it belongs to. */
+  .journey-media--walk  { order: 1; }
+  .journey-text--1      { order: 2; }
+  .journey-media--sit   { order: 3; }
+  .journey-text--2      { order: 4; }
+  .journey-media--point { order: 5; }
+  .journey-text--3      { order: 6; }
+  .journey-media { justify-content: center; }
+  .journey-media img { max-width: 190px; }
+  .journey-text p, .focus-item p { font-size: 1rem; margin-top: 14px; }
+  .focus-item h3 { font-size: 1.15rem; }
+  .section-heading { font-size: 1.5rem; }
+
+  /* ---- CTA ---- */
+  .cta-card { padding: 22px 18px; gap: 20px; }
+  .cta-actions { grid-template-columns: 1fr; }
+  .cta-text p { max-width: none; }
+
+  /* ---- Footer ---- */
+  .site-footer { padding: 22px 18px 20px; }
+  .footer-ghost span { font-size: clamp(2.1rem, 13vw, 3.4rem); }
+  .footer-tagline {
+    position: static; align-items: flex-start; text-align: left;
+    margin-top: 14px; font-size: 1.2rem;
+  }
+  .accent-icon { display: none; }
+  .footer-row { gap: 22px; margin-top: 26px; }
+  .say-hello { width: 100%; justify-content: center; padding: 15px 22px; }
+  .social-row { width: 100%; justify-content: flex-start; gap: 18px; }
+  .social-row img, .social-row svg { width: 22px; height: 22px; }
+  .contact-block { text-align: left; font-size: 0.95rem; }
+  .copyright { margin-top: 22px; }
+
+  /* ---- Case studies ---- */
+  .case-header { padding-top: 16px; }
+  .case-hero { padding-block: 40px 20px; }
+  .case-section { padding-block: 30px; }
+  .case-grid { row-gap: 14px; }
+  .case-label { position: static; font-size: 1.75rem; margin-bottom: 4px; }
+  .case-label br { display: none; }
+  .case-col { gap: 24px; }
+  .case-hero-title { gap: 12px; }
+  /* only the square app icons scale as a square; the wide lockups keep
+     their aspect and just get shorter */
+  .case-logo { width: 48px; height: 48px; }
+  .case-logo--devora    { width: auto; height: 54px; }
+  .case-logo--match     { width: auto; height: 30px; }
+  .case-logo--mar       { width: auto; height: 26px; }
+  .case-logo--mindbloom { width: auto; height: 26px; }
+  .case-hero-tagline { font-size: 1.15rem; line-height: 1.45; }
+  .case-hero-title h1 { font-size: 1.5rem; }
+  .case-block h2 { font-size: 1.2rem; }
+  .case-block p { font-size: 1rem; }
+  .case-shot { margin-top: 24px; border-radius: 12px; }
+  .case-shot img { border-radius: 12px; }
+
+  .case-meta, .case-meta--4,
+  .case-study--match .case-meta--4,
+  .case-study--mar .case-meta--4,
+  .case-study--mindbloom .case-meta--4 {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 14px;
+    margin-top: 24px;
+  }
+  .case-meta-label { font-size: 0.8rem; }
+  .case-meta-value { font-size: 0.95rem; margin-top: 6px; }
+
+  .icon-card, .challenge-card, .finding-card, .impact-stat,
+  .numbered-card, .stat-card, .highlight-card { padding: 20px; }
+  .icon-card h3, .challenge-head h3 { font-size: 1.05rem; }
+  .stat-card-num { font-size: 1.2rem; }
+  .impact-num,
+  .case-study--match .impact-num,
+  .case-study--mindbloom .impact-num { font-size: 2.25rem; }
+  .challenge-question { font-size: 1rem; padding: 18px; }
+  .case-quote { font-size: 1.1rem; padding: 18px 20px; }
+  .note-card { padding: 18px 20px; font-size: 1rem; }
+  .case-study--match .note-card--maroon,
+  .case-study--mindbloom .note-card--maroon { font-size: 1.05rem; }
+  .compare-row { padding: 16px 18px; gap: 6px; }
+  .compare-row--head { font-size: 1.05rem; }
+  .compare-row--head div:last-child { display: none; }
+
+  /* flow diagram becomes a plain vertical list */
+  .flow-diagram,
+  .case-study--match .flow-diagram,
+  .case-study--mindbloom .flow-diagram { display: flex; flex-direction: column; gap: 10px; }
+  /* must out-specify the desktop `.case-study--x .flow-step:nth-child(n)` rules */
+  .flow-step,
+  .case-study--match .flow-step:nth-child(1),
+  .case-study--match .flow-step:nth-child(2),
+  .case-study--match .flow-step:nth-child(3),
+  .case-study--match .flow-step:nth-child(4),
+  .case-study--mindbloom .flow-step:nth-child(1),
+  .case-study--mindbloom .flow-step:nth-child(2),
+  .case-study--mindbloom .flow-step:nth-child(3),
+  .case-study--mindbloom .flow-step:nth-child(4) { display: flex; margin-left: 0; }
+  /* and the elbow connectors only make sense on the staircase */
+  .case-study--match .flow-step:not(:first-child)::before,
+  .case-study--mindbloom .flow-step:not(:first-child)::before { display: none; }
+  .flow-pill,
+  .case-study--match .flow-pill,
+  .case-study--mindbloom .flow-pill {
+    font-size: 0.95rem; padding: 12px 18px;
+    width: 100%; text-align: center; justify-content: center;
+  }
+
+  /* MAR */
+  .mar-sec { padding-block: 40px; }
+  .mar-h1 { font-size: 1.6rem; }
+  .mar-statement { font-size: 1.2rem; }
+  .mar-eyebrow { font-size: 0.9rem; }
+  .mar-timeline { grid-template-columns: 1fr; }
+  .mar-phase { margin-bottom: 0; }
+  .mar-row, .mar-photo-row, .mar-objective, .mar-type { grid-template-columns: 1fr; }
+  .mar-strip { flex-direction: column; gap: 12px; }
+  .mar-swatches { grid-template-columns: repeat(2, 1fr); }
+  .mar-thanks { font-size: clamp(1.6rem, 9vw, 2.4rem); }
+
+  /* the flying butterfly covers content on a small screen */
+  .mb-flyer { display: none; }
+}
+
+@media (max-width: 400px) {
+  .container { padding-inline: 16px; }
+  .logo-name { font-size: 0.95rem; }
+  .case-meta, .case-meta--4,
+  .case-study--match .case-meta--4,
+  .case-study--mar .case-meta--4,
+  .case-study--mindbloom .case-meta--4 { grid-template-columns: 1fr; }
+  .footer-ghost span { font-size: 2.1rem; }
+}
