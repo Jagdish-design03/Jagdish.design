@@ -830,7 +830,9 @@ button { font-family: inherit; }
   padding-top: clamp(20px, 3.5vh, 48px);
 }
 
-.case-header .navbar { position: static; }
+/* Must stay positioned: the mobile dropdown is absolute and anchors to this.
+   With `static` it resolved against the viewport and opened below the fold. */
+.case-header .navbar { position: relative; }
 
 .case-main {
   background: var(--bg-page);
