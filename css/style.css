@@ -2476,3 +2476,64 @@ button:focus-visible {
   .case-study--mindbloom .case-meta--4 { grid-template-columns: 1fr; }
   .footer-ghost span { font-size: 2.1rem; }
 }
+
+/* MAR — Impact list + Reflection (added so the page carries the same
+   Problem -> Impact -> Reflection arc as the other case studies) */
+.mar-statement--sm {
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-primary);
+  max-width: 68ch;
+}
+.mar-impact {
+  list-style: none;
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.mar-impact li {
+  background: var(--devora-card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 24px;
+}
+.mar-impact h3 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--mar-accent-light);
+  margin-bottom: 10px;
+}
+.mar-impact p { font-size: 1rem; line-height: 1.55; color: var(--text-secondary); }
+.case-quote--mar {
+  margin-top: 28px;
+  border-left-color: var(--mar-accent);
+  background: rgba(108, 92, 231, 0.12);
+  font-weight: 500;
+}
+
+/* Hero availability — a recruiter should learn you are looking without scrolling */
+.hero-available {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: rgba(75, 255, 3, 0.10);
+  border: 1px solid rgba(75, 255, 3, 0.28);
+  font-size: clamp(0.85rem, 0.78rem + 0.3vw, 1rem);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.hero-available-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  flex-shrink: 0;
+}
+@media (max-width: 560px) {
+  .hero-available { white-space: normal; text-align: center; }
+}
