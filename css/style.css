@@ -58,7 +58,6 @@
    sitting in a narrow column. Below 1600 nothing changes. */
 @media (min-width: 1600px) {
   :root { --container-max: 1560px; --side-margin: 96px; }
-  .hero-sub { max-width: 840px; }
 }
 @media (min-width: 1800px) {
   :root { --container-max: 1680px; --side-margin: 112px; }
@@ -2565,3 +2564,10 @@ button:focus-visible {
   font-weight: 500;
 }
 
+/* ---------- Large-screen component overrides ----------
+   These must live at the end: the token media queries near the top of this file
+   are fine (custom properties resolve at use time), but a component override up
+   there loses to the later base rule at equal specificity. */
+@media (min-width: 1600px) {
+  .hero-sub { max-width: 860px; }
+}
