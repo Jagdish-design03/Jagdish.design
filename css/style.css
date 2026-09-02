@@ -58,7 +58,7 @@
    sitting in a narrow column. Below 1600 nothing changes. */
 @media (min-width: 1600px) {
   :root { --container-max: 1560px; --side-margin: 96px; }
-  .hero-sub { max-width: 720px; }
+  .hero-sub { max-width: 840px; }
 }
 @media (min-width: 1800px) {
   :root { --container-max: 1680px; --side-margin: 112px; }
@@ -354,6 +354,7 @@ button { font-family: inherit; }
   max-width: 600px;
   width: 100%;
   min-width: 0;
+  text-wrap: balance;
   margin-top: clamp(40px, 9vh, 120px);
   font-size: clamp(0.85rem, 0.8rem + 0.7vw, 1.6rem);
   font-weight: 400;
