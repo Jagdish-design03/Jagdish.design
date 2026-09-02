@@ -53,6 +53,20 @@
   --mar-gradient: linear-gradient(120deg, #A29BFE 0%, #6C5CE7 100%);
 }
 
+/* Large screens: 1440 was capping the layout and leaving ~233px of dead margin
+   each side at 1920. Step the container up so the design breathes instead of
+   sitting in a narrow column. Below 1600 nothing changes. */
+@media (min-width: 1600px) {
+  :root { --container-max: 1560px; --side-margin: 96px; }
+  .hero-sub { max-width: 720px; }
+}
+@media (min-width: 1800px) {
+  :root { --container-max: 1680px; --side-margin: 112px; }
+}
+@media (min-width: 2200px) {
+  :root { --container-max: 1800px; --side-margin: 120px; }
+}
+
 /* ---------- Fonts (self-hosted) ---------- */
 @font-face {
   font-family: 'Satoshi';
@@ -296,10 +310,10 @@ button { font-family: inherit; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   text-align: center;
   padding-inline: clamp(20px, 6vw, 80px);
-  margin-top: 100px;
+  margin-top: clamp(32px, 5vh, 72px);
   min-width: 0;
   min-height: 0;
 }
@@ -308,7 +322,7 @@ button { font-family: inherit; }
   min-width: 0;
   white-space: nowrap;
   text-align: left;
-  font-size: clamp(1rem, 1.35rem + 2.1vw, 3.4rem);
+  font-size: clamp(1rem, 1.35rem + 2.1vw, 4.25rem);
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -340,14 +354,14 @@ button { font-family: inherit; }
   max-width: 600px;
   width: 100%;
   min-width: 0;
-  margin-top: 160px;
-  font-size: clamp(0.85rem, 0.8rem + 0.7vw, 1.4rem);
+  margin-top: clamp(40px, 9vh, 120px);
+  font-size: clamp(0.85rem, 0.8rem + 0.7vw, 1.6rem);
   font-weight: 400;
   color: var(--text-secondary);
 }
 
 .scroll-indicator {
-  margin-top: clamp(20px, 4vh, 48px);
+  margin-top: clamp(24px, 6vh, 72px);
   display: flex;
   flex-direction: column;
   align-items: center;
