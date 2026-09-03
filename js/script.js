@@ -216,6 +216,65 @@ if (workSection && workCards.length) {
 
   window.addEventListener('resize', updateWork);
   updateWork();
+
+  /* Clicking a category moves the stack to that project.
+
+     The stack is scroll-linked, so we invert updateWork's mapping and land in
+     the middle of the target card's scroll band rather than on its edge. While
+     the stack is sticky that band is the whole story; on phones the stack is
+     switched off and the cards are a plain list, so we centre the card itself.
+
+     Both paths go through scrollToY. Note the fallback uses 'instant', not
+     'auto': this page sets `scroll-behavior: smooth` on <html>, and 'auto'
+     defers to that CSS, so an 'auto' fallback would just be smooth again. */
+  const scrollToY = (y) => {
+    const target = Math.max(0, Math.round(y));
+    const start = window.scrollY;
+    if (Math.abs(target - start) < 2) return;
+
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.scrollTo({ top: target, behavior: 'instant' });
+      return;
+    }
+    window.scrollTo({ top: target, behavior: 'smooth' });
+    // If the smooth animation never starts (throttled or backgrounded tabs
+    // don't run it), land it outright so the click is never a no-op.
+    setTimeout(() => {
+      if (Math.abs(window.scrollY - start) < 2) {
+        window.scrollTo({ top: target, behavior: 'instant' });
+      }
+    }, 250);
+  };
+
+  // A programmatic scroll doesn't always emit scroll events, so refresh the
+  // active card/label directly instead of waiting for one that may not come.
+  const syncAfterScroll = () => [120, 400, 800, 1200].forEach(t => setTimeout(updateWork, t));
+
+  const goToCategory = (cat) => {
+    let idx = -1;
+    workCards.forEach((card, i) => {
+      if (idx === -1 && Number(card.dataset.cat) === cat) idx = i;
+    });
+    if (idx === -1) return;
+
+    const sticky = workSection.querySelector('.work-sticky');
+    const stacked = sticky && getComputedStyle(sticky).position === 'sticky';
+    const total = workSection.offsetHeight - window.innerHeight;
+
+    if (stacked && total > 0) {
+      const sectionTop = workSection.getBoundingClientRect().top + window.scrollY;
+      scrollToY(sectionTop + ((idx + 0.5) / workCards.length) * total);
+    } else {
+      const r = workCards[idx].getBoundingClientRect();
+      scrollToY(r.top + window.scrollY - (window.innerHeight - r.height) / 2);
+    }
+    syncAfterScroll();
+  };
+
+  workListItems.forEach((li) => {
+    const btn = li.querySelector('button');
+    if (btn) btn.addEventListener('click', () => goToCategory(Number(btn.dataset.cat)));
+  });
 }
 
 /* ---------- Journey: scroll-linked timeline progress ---------- */
