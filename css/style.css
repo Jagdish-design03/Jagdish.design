@@ -2581,3 +2581,114 @@ button:focus-visible {
   background: rgba(108, 92, 231, 0.12);
   font-weight: 500;
 }
+
+/* =====================================================
+   Work index page — every project in one vertical list
+===================================================== */
+
+.work-page-intro { padding-block: 6.5rem 0; }
+
+.work-page-intro h1 {
+  font-size: clamp(2rem, 1.2rem + 2.6vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+.work-page-intro p {
+  margin-top: 1.25rem;
+  max-width: 46rem;
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.work-all {
+  padding-block: 3.5rem 1rem;
+  display: grid;
+  /* minmax(0,1fr), never a bare 1fr - the auto minimum would let a wide
+     card blow the track out and push the page into horizontal overflow. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.5rem, 4vw, 3.5rem) clamp(1.25rem, 2.5vw, 2rem);
+}
+/* The entry owns the column, so the category label and its rule line up
+   with the card edges rather than floating away from them. */
+.work-entry {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.work-entry-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.875rem;
+  margin-bottom: 1.125rem;
+}
+.work-entry-cat {
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.work-entry-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--pill-border);
+}
+
+/* The card art is a fixed-ratio raster, so the card keeps its designed
+   aspect and is simply centred at a comfortable width - stretching it to
+   the full container would distort the background. */
+.work-all .work-card {
+  position: static;
+  inset: auto;
+  width: 100%;
+  /* Keep the designed ratio: the card art is a raster with a folded corner,
+     so a variable-height box would stretch the fold and the dot texture. */
+  aspect-ratio: 1256 / 1136;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Anchor every shot to the card's bottom edge. Without this the image sits
+   wherever the title and description happen to end, so a short description
+   (Devora) left it floating with a gap below while the others bled off the
+   bottom - the same card design reading two different ways in one grid. */
+.work-all .work-card-shot {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+/* Flex items shrink by default, which squashed the fixed-height arrow pill
+   into a flat bar once the card became a flex column. Nothing in the card
+   should compress - overflow is the intended bleed. */
+.work-all .work-card > * { flex-shrink: 0; }
+.work-all .work-card:hover { transform: translateY(-4px); }
+.work-all .work-card:focus-visible {
+  outline: 2px solid var(--accent-green);
+  outline-offset: 6px;
+}
+
+/* Between tablet and small laptop a 2-up column gets narrower than the card
+   content needs, and the shot starts bleeding well past the bottom edge
+   again. One column with a capped width keeps the same card proportions. */
+@media (max-width: 1200px) {
+  .work-all { grid-template-columns: minmax(0, 1fr); }
+  .work-entry { max-width: 40rem; margin-inline: auto; }
+}
+
+@media (max-width: 768px) {
+  .work-page-intro { padding-block: 4.5rem 0; }
+  .work-all { padding-block: 2.25rem 0; gap: 2.5rem; }
+  .work-all { grid-template-columns: minmax(0, 1fr); }
+  .work-all .work-card {
+    aspect-ratio: auto;
+    padding: 1.375rem 1.25rem 0;
+    background-size: cover;
+  }
+  .work-entry-head { margin-bottom: 0.75rem; }
+}
+

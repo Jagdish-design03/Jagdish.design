@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jagdish Bisht — Product Designer</title>
+<title>Work — Jagdish Bisht</title>
+<meta name="description" content="Four product design case studies by Jagdish Bisht — two mobile apps, an AI product and a marketing site, each covering the problem, the decisions and the screens they produced.">
 <link rel="stylesheet" href="css/style.css?v=20260904h">
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -14,25 +15,25 @@
   })(window, document, "clarity", "script", "ybke4p9ocn");
 </script>
 </head>
-<body>
+<body class="case-study work-page">
 
-<header class="hero" id="top">
+<header class="case-header">
   <nav class="navbar">
-    <div class="nav-left">
+    <a href="index.html" class="nav-left">
       <div class="avatar-wrap avatar-wrap--open" title="Open to Product &amp; UX/UI Designer roles">
         <img src="assets/images/profile.webp" alt="Jagdish Bisht" class="avatar" width="195" height="195" loading="lazy" decoding="async">
         <span class="open-badge">Open to work</span>
       </div>
       <span class="logo-name">Jagdish Bisht</span>
-    </div>
+    </a>
 
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
 
     <div class="nav-right" id="navRight">
-      <a href="work.html" class="nav-pill">Work</a>
-      <a href="#about" class="nav-pill">About</a>
+      <a href="work.html" class="nav-pill" aria-current="page">Work</a>
+      <a href="index.html#about" class="nav-pill">About</a>
       <a href="assets/Jagdish-Bisht-Resume.pdf?v=20260903" class="nav-pill" target="_blank" rel="noopener">Resume</a>
       <span class="divider" aria-hidden="true"></span>
       <a href="https://www.linkedin.com/in/jagdish-bisht-475baa339/" target="_blank" rel="noopener" class="icon-link" aria-label="LinkedIn">
@@ -43,49 +44,22 @@
       </a>
     </div>
   </nav>
-
-  <div class="hero-content">
-    <h1 class="hero-heading" id="heroHeading">
-      <span class="dim">I design products, sharpened by</span><span class="bright" id="typedWord"></span><span class="type-cursor" aria-hidden="true"></span>
-    </h1>
-    <p class="hero-sub">Designing mobile apps, AI products, and dashboards for global teams - from first user insight to shipped screen.</p>
-
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <span class="scroll-track"><span class="scroll-line"></span></span>
-    </div>
-  </div>
 </header>
 
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Product design.</span>
-    <span>Sharpened by AI.</span>
-    <span>Research-led.</span>
-    <span>Shipped fast.</span>
-    <span>Built for global teams.</span>
-    <span>Product design.</span>
-    <span>Sharpened by AI.</span>
-    <span>Research-led.</span>
-    <span>Shipped fast.</span>
-    <span>Built for global teams.</span>
-  </div>
-</div>
+<main class="case-main">
+  <section class="container work-page-intro">
+    <h1>Selected Work</h1>
+    <p>Two mobile apps, an AI product and a marketing site. Each case study covers the same ground: the problem as I found it, the calls I made and why, and the screens those calls produced. Two of the four are pre-launch, and the pages say so rather than dressing them up as shipped results.</p>
+  </section>
 
-<section class="work" id="work">
-  <div class="work-sticky">
-    <div class="container work-grid">
-      <div class="work-info">
-        <h2 class="section-heading">Selected Work</h2>
-        <ul class="work-list" id="workList">
-          <li class="active"><button type="button" data-cat="0"><span class="dash" aria-hidden="true"></span>Mobile Apps</button></li>
-          <li><button type="button" data-cat="1"><span class="dash" aria-hidden="true"></span>AI products</button></li>
-          <li><button type="button" data-cat="2"><span class="dash" aria-hidden="true"></span>Website &amp; landing pages</button></li>
-        </ul>
-      </div>
-
-      <div class="work-card-stack" id="workCardStack">
-        <a href="matchd.html" class="work-card active" data-index="0" data-cat="0" aria-label="View the Match case study">
+  <section class="container">
+    <div class="work-all">
+      <div class="work-entry">
+        <div class="work-entry-head">
+          <span class="work-entry-cat">Mobile App</span>
+          <span class="work-entry-rule" aria-hidden="true"></span>
+        </div>
+        <a href="matchd.html" class="work-card" aria-label="View the Match case study">
           <h3 class="work-card-title">Match</h3>
           <p class="work-card-desc">A two-sided hiring app that replaces the resume pile with a 60-second video and an honest match score.</p>
           <span class="work-card-arrow">
@@ -93,8 +67,14 @@
           </span>
           <img class="work-card-shot" src="assets/images/match-card.webp" alt="Match hiring app video-intro and match preview" width="755" height="650" fetchpriority="high">
         </a>
+      </div>
 
-        <a href="mindbloom.html" class="work-card" data-index="1" data-cat="0" aria-label="View the Mind Bloom case study">
+      <div class="work-entry">
+        <div class="work-entry-head">
+          <span class="work-entry-cat">Mobile App</span>
+          <span class="work-entry-rule" aria-hidden="true"></span>
+        </div>
+        <a href="mindbloom.html" class="work-card" aria-label="View the Mind Bloom case study">
           <h3 class="work-card-title">Mind Bloom</h3>
           <p class="work-card-desc">A merge puzzle built for children and players 45+ alike - seventy rounds that grow into a garden you keep.</p>
           <span class="work-card-arrow">
@@ -102,8 +82,14 @@
           </span>
           <img class="work-card-shot" src="assets/images/mindbloom-card.webp" alt="Mind Bloom game board and sign-in screen on two phones" width="940" height="700" loading="lazy" decoding="async">
         </a>
+      </div>
 
-        <a href="devora.html" class="work-card" data-index="2" data-cat="1" aria-label="View the Devora case study">
+      <div class="work-entry">
+        <div class="work-entry-head">
+          <span class="work-entry-cat">AI Product</span>
+          <span class="work-entry-rule" aria-hidden="true"></span>
+        </div>
+        <a href="devora.html" class="work-card" aria-label="View the Devora case study">
           <h3 class="work-card-title">Devora</h3>
           <p class="work-card-desc">An AI pricing assistant that turns a full-day quote cycle into a two-minute, trustworthy estimate.</p>
           <span class="work-card-arrow">
@@ -111,8 +97,14 @@
           </span>
           <img class="work-card-shot" src="assets/images/devora-card.webp" alt="Devora AI project advisor chat interface preview" width="564" height="308" loading="lazy" decoding="async">
         </a>
+      </div>
 
-        <a href="mar.html" class="work-card" data-index="3" data-cat="2" aria-label="View the MAR case study">
+      <div class="work-entry">
+        <div class="work-entry-head">
+          <span class="work-entry-cat">Website</span>
+          <span class="work-entry-rule" aria-hidden="true"></span>
+        </div>
+        <a href="mar.html" class="work-card" aria-label="View the MAR case study">
           <h3 class="work-card-title">MAR</h3>
           <p class="work-card-desc">A conversion-driven website for a growth agency - bold brand, clear service structure, and a hierarchy built to convert.</p>
           <span class="work-card-arrow">
@@ -120,73 +112,12 @@
           </span>
           <img class="work-card-shot" src="assets/images/mar-card.webp" alt="MAR agency website shown across two phones" width="860" height="696" loading="lazy" decoding="async">
         </a>
-</div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<section class="journey" id="about">
-  <div class="container journey-grid">
-    <span class="timeline-line" aria-hidden="true"></span>
-    <span class="timeline-progress" id="timelineProgress" aria-hidden="true"></span>
-    <span class="timeline-dot" data-dot="0" aria-hidden="true"></span>
-    <span class="timeline-dot" data-dot="1" aria-hidden="true"></span>
-    <span class="timeline-dot" data-dot="2" aria-hidden="true"></span>
-
-    <div class="journey-media journey-media--walk">
-      <img src="assets/images/character-walking.webp" alt="" width="282" height="326" loading="lazy" decoding="async">
-    </div>
-    <div class="journey-text journey-text--1">
-      <h2 class="section-heading" data-timeline-heading="0">My Journey to Design</h2>
-      <p>Based in Dehradun, currently designing at Code Brew Labs, Chandigarh - working with product teams across the UAE and US to ship mobile apps, AI chatbots, AI agents, and dashboards. <strong>I sit close to marketing and engineering,</strong> not away from them, because good design decisions rarely happen in isolation.</p>
-      <p><strong>My focus isn't just interfaces - it's root problems.</strong> Every project I take on gets pulled apart with research first: where users drop off, why a flow fails, what data actually says versus what the brief assumes. Then I design the fix, not just the screen.</p>
-    </div>
-
-    <div class="journey-text journey-text--2">
-      <h2 class="section-heading" data-timeline-heading="1">What I Focus On</h2>
-      <div class="focus-item">
-        <h3>Product Design</h3>
-        <p>— End-to-end ownership — research, flows, structure, and the decisions that hold a product together.</p>
-      </div>
-      <div class="focus-item">
-        <h3>UX/UI Design</h3>
-        <p>— Interfaces built on heuristic analysis and behavior data, not aesthetic guesswork.</p>
-      </div>
-      <div class="focus-item">
-        <h3>AI-Augmented Workflow</h3>
-        <p>— Figma, Claude, and AI-native tools built into my process daily — for speed without cutting research or reasoning.</p>
-      </div>
-    </div>
-    <div class="journey-media journey-media-right journey-media--sit">
-      <img src="assets/images/character-sitting.webp" alt="" width="209" height="306" loading="lazy" decoding="async">
-    </div>
-
-    <div class="journey-media journey-media--point">
-      <img src="assets/images/character-pointing.webp" alt="" width="272" height="408" loading="lazy" decoding="async">
-    </div>
-    <div class="journey-text journey-text--3">
-      <h2 class="section-heading" data-timeline-heading="2">Approach</h2>
-      <div class="focus-item">
-        <h3>Diagnose</h3>
-        <p>— Behavior tracking (FigJam, Microsoft Clarity, Google Analytics) and heuristic analysis to find where a product is actually failing - not where it's assumed to be failing.</p>
-      </div>
-      <div class="focus-item">
-        <h3>Reframe</h3>
-        <p>— Every problem gets root-caused before it gets designed. I've picked up failing/loss-making products mid-project and traced the actual issue before touching a screen.</p>
-      </div>
-      <div class="focus-item">
-        <h3>Design, faster</h3>
-        <p>— AI tools compress the exploration phase - UX Magic, Claude Code, Claude Cowork - so more time goes into decisions, less into repetition.</p>
-      </div>
-      <div class="focus-item">
-        <h3>Ship &amp; collaborate</h3>
-        <p>— Close handoff with developers and in-house marketing teams - design that survives contact with build.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta" id="contact">
+<section class="cta cta--case" id="contact">
   <div class="container">
     <div class="cta-card">
       <div class="cta-text">
@@ -252,6 +183,6 @@
   </div>
 </section>
 
-<script src="js/script.js?v=20260904a"></script>
+<script src="js/script.js?v=20260904b"></script>
 </body>
 </html>
