@@ -1,383 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mind Bloom — Jagdish Bisht</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mind Bloom, a merge puzzle for two generations — Case study by Jagdish Bisht</title>
+<meta name="description" content="Concept case study: a merge puzzle game designed for children 6–12 and players 45+ at the same time, with seventy rounds that grow into a garden players keep.">
+<meta property="og:title" content="Mind Bloom, a merge puzzle for two generations — Case study by Jagdish Bisht">
+<meta property="og:description" content="Concept case study: a merge puzzle game designed for children 6–12 and players 45+ at the same time, with seventy rounds that grow into a garden players keep.">
+<meta property="og:image" content="https://jagdish-design03.github.io/Jagdish.design/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://jagdish-design03.github.io/Jagdish.design/mindbloom.html">
+<meta name="theme-color" content="#09090B">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%23FF4D5E'/><stop offset='1' stop-color='%23FF8A3D'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='50%' y='58%' text-anchor='middle' dominant-baseline='middle' font-family='Impact,Arial Black' font-size='30' fill='white'>JB</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap">
-<link rel="stylesheet" href="css/style.css?v=20260909a">
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "ybke4p9ocn");
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css?v=5">
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","ybke4p9ocn");</script>
 </head>
-<body class="case-study case-study--mindbloom">
-
-<div class="mb-flyer" id="mbFlyer" aria-hidden="true">
-  <div class="mb-bf">
-    <img class="mb-wing mb-wing--l" src="assets/icons/butterfly-left.webp" alt="" width="155" height="256">
-    <img class="mb-wing mb-wing--r" src="assets/icons/butterfly-right.webp" alt="" width="156" height="256">
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="logo" aria-label="Jagdish Bisht, home"><span class="logo-mark">JB</span><span><b>Jagdish Bisht</b><small>Product Designer</small></span></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="playground.html">Playground</a>
+      <a href="assets/Jagdish-Bisht-Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a href="mailto:Bishtjagdish489@gmail.com?subject=Product%20design%20role" class="btn btn-grad btn-sm">Hire me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </nav>
   </div>
-</div>
-
-<header class="case-header">
-  <nav class="navbar">
-    <a href="index.html" class="nav-left">
-      <div class="avatar-wrap avatar-wrap--open" title="Open to Product &amp; UX/UI Designer roles">
-        <img src="assets/images/profile.webp" alt="Jagdish Bisht" class="avatar" width="195" height="195" loading="lazy" decoding="async">
-        <span class="open-badge">Open to work</span>
-      </div>
-      <span class="logo-name">Jagdish Bisht</span>
-    </a>
-
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <div class="nav-right" id="navRight">
-      <a href="index.html" class="nav-pill">Home</a>
-      <a href="work.html" class="nav-pill">Work</a>
-      <a href="index.html#about" class="nav-pill">About</a>
-      <a href="assets/Jagdish-Bisht-Resume.pdf?v=20261104" class="nav-pill" target="_blank" rel="noopener">Resume</a>
-      <span class="divider" aria-hidden="true"></span>
-      <a href="https://www.linkedin.com/in/jagdish-bisht-475baa339/" target="_blank" rel="noopener" class="icon-link" aria-label="LinkedIn">
-        <img src="assets/icons/linkedin.svg" alt="" loading="lazy" decoding="async">
-      </a>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Bishtjagdish489%40gmail.com&su=Product%20design%20opportunity&body=Hi%20Jagdish%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20to%20you%20about%20a%20product%20design%20role%20on%20our%20team.%0A%0AWhen%20would%20be%20a%20good%20time%20for%20a%20quick%20call%3F%0A" target="_blank" rel="noopener" class="icon-link" aria-label="Email Jagdish">
-        <img src="assets/icons/gmail.svg" alt="" loading="lazy" decoding="async">
-      </a>
-    </div>
-  </nav>
 </header>
+<main id="main">
 
-<main class="case-main">
-
-  <!-- ============ HERO ============ -->
-  <section class="case-hero container">
-    <div class="case-grid">
-      <div class="case-hero-title">
-        <img src="assets/icons/mindbloom/mindbloom-logo.webp" alt="Mind Bloom" class="case-logo case-logo--mindbloom" width="315" height="47" loading="lazy" decoding="async">
-        <h1 class="sr-only">Mind Bloom</h1>
-      </div>
-      <p class="case-hero-tagline">A merge puzzle for two players who almost never share a game - a seven-year-old and their grandparent. <strong>Merge flowers, clear seventy rounds, and spend everything you win building a garden that stays yours</strong> - on iOS and Android.</p>
+<section class="cs-hero">
+  <div class="wrap">
+    <div class="chips"><span class="chip chip-accent">Concept · Pre-launch</span><span class="chip">Mobile game</span></div>
+    <h1>One game for a 7-year-old <span class="serif">and</span> their grandparent.</h1>
+    <p class="cs-lede">A merge puzzle designed for children and players over 45 at the same time.</p>
+    <div class="cs-meta">
+      <div><b>My role</b><span>Product &amp; UX designer</span></div>
+      <div><b>Timeline</b><span>6 weeks</span></div>
+      <div><b>Players</b><span>Children 6–12 &amp; adults 45+</span></div>
+      
     </div>
-
-    <div class="case-shot case-shot--hero case-shot--mindbloom-hero">
-      <img src="assets/images/mindbloom/hero.webp" alt="Mind Bloom board, sign-in and world map on three phones" width="2560" height="800" fetchpriority="high">
-    </div>
-
-    <div class="case-grid">
-      <span aria-hidden="true"></span>
-      <div class="case-meta case-meta--4">
-        <div>
-          <span class="case-meta-label">Role</span>
-          <span class="case-meta-value">Product &amp; UX Designer</span>
-        </div>
-        <div>
-          <span class="case-meta-label">Timeline</span>
-          <span class="case-meta-value">6 weeks</span>
-        </div>
-        <div>
-          <span class="case-meta-label">Players</span>
-          <span class="case-meta-value">Children 6-12 &amp; adults 45+</span>
-        </div>
-        <div>
-          <span class="case-meta-label">Platform</span>
-          <span class="case-meta-value">Mobile game, iOS &amp; Android</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ OVERVIEW ============ -->
-  <section class="case-section container">
-    <div class="case-grid">
-      <span class="case-label">Overview</span>
-      <div class="case-col">
-        <div class="case-block">
-          <h2>In a nutshell</h2>
-          <p>Mind Bloom is a merge puzzle where everything you combine grows into something better - three daisies make a fern, ferns make clovers, clovers bloom. Each round states one goal in plain words at the top of the board and gives you a fixed number of moves to reach it. Clear the round and the coins you earned drop into a garden that persists between sessions: seventy rounds across seven worlds, and the garden at the end is the thing you actually built. It's designed for two audiences most puzzle games treat as one - children who want the next round immediately, and players past 45 who would rather sit with a board and think.</p>
-        </div>
-
-        <div class="case-shot case-shot--mindbloom">
-          <img src="assets/images/mindbloom/overview.webp" alt="Mind Bloom splash screen and sign-in, captioned Login to continue your garden" width="1690" height="648" loading="lazy" decoding="async">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ THE PROBLEM ============ -->
-  <section class="case-section container">
-    <div class="case-grid">
-      <span class="case-label">The Problem</span>
-      <div class="case-col">
-        <div class="case-block">
-          <h2>Built for everyone, designed for no one</h2>
-          <p>Merge games are easy to download and easy to abandon. Most are tuned for a single imagined player - young, quick, playing in short bursts - and everyone outside that profile quietly drops off. Designing for children and for players over 45 at the same time meant re-examining defaults the genre had stopped questioning.</p>
-        </div>
-
-        <div class="stat-card-grid stat-card-grid--3col">
-          <div class="stat-card stat-card--dark">
-            <span class="stat-card-num">Two audiences</span>
-            <p>children and players 45+, sharing one grid and one set of rules</p>
-          </div>
-          <div class="stat-card stat-card--dark">
-            <span class="stat-card-num">70 rounds</span>
-            <p>difficulty has to climb across seven worlds without once feeling unfair</p>
-          </div>
-          <div class="stat-card stat-card--dark">
-            <span class="stat-card-num">One goal</span>
-            <p>everything on the board has to serve a single, stateable objective</p>
-          </div>
-        </div>
-
-        <div class="stat-card-grid">
-          <div class="stat-card stat-card--pink">
-            <span class="stat-card-num">Tutorials nobody finishes</span>
-            <p>Children skip them and older players feel talked down to. The first board has to teach the rule by being playable.</p>
-          </div>
-          <div class="stat-card stat-card--pink">
-            <span class="stat-card-num">Targets tuned for young thumbs</span>
-            <p>Small tiles and tight timers quietly exclude the 45+ player the game is also being made for.</p>
-          </div>
-          <div class="stat-card stat-card--pink">
-            <span class="stat-card-num">Score with nowhere to land</span>
-            <p>Coins and stars are abstract. Nothing accumulates into something a player can point at and say they made it.</p>
-          </div>
-          <div class="stat-card stat-card--pink">
-            <span class="stat-card-num">Difficulty that spikes</span>
-            <p>One unreadable round late in a world is where most players stop - and stopping once is usually stopping for good.</p>
-          </div>
-        </div>
-
-        <div class="note-card note-card--maroon">
-          "Make the first move obvious and the fortieth move interesting." - the rule I came back to every time a round felt either patronising or punishing.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ DESIGNING FOR TWO AGES ============ -->
-  <section class="case-section container">
-    <div class="case-grid">
-      <span class="case-label">Designing for<br>two ages</span>
-      <div class="case-col">
-        <div class="case-block">
-          <p>Designing for a seven-year-old and a sixty-year-old at once meant no decision could be justified with "most players". Each one had to hold up twice.</p>
-        </div>
-
-        <div class="compare-table">
-          <div class="compare-row compare-row--head">
-            <div>What the two audiences need</div>
-            <div>What it changed in the design</div>
-          </div>
-          <div class="compare-row">
-            <div>Players over 45 often play at arm's length, one-handed, in whatever light they're sitting in.</div>
-            <div>Tiles differ by shape as well as colour - never colour alone - on targets big enough to hit without aiming.</div>
-          </div>
-          <div class="compare-row">
-            <div>Children replay a round they have already cleared; older players almost never do.</div>
-            <div>Rounds stay open and replayable, but garden rewards drop only once. Replaying is for enjoyment, not grinding.</div>
-          </div>
-          <div class="compare-row">
-            <div>Both groups quit at a round they can't read, not at a round that is hard.</div>
-            <div>Every board opens with at least one obvious merge available, so the first move is never a guess.</div>
-          </div>
-        </div>
-
-        <div class="note-card note-card--olive">
-          <span class="note-card-lead">Why a garden and not a score :</span> a score resets the moment you close the app. A garden doesn't. Putting the reward somewhere permanent is what turns "one more round" into a reason to open the game tomorrow - and it gives a child and a grandparent the same thing to be proud of.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ APPROACH ============ -->
-  <section class="case-section container">
-    <div class="case-grid">
-      <span class="case-label">Approach</span>
-      <div class="case-col">
-        <div class="case-block">
-          <p>Five rules that settled almost every argument with myself, in the order they came up.</p>
-        </div>
-
-        <div class="numbered-card-grid">
-          <div class="numbered-card">
-            <span class="num">1</span>
-            <p>Readable before clever</p>
-          </div>
-          <div class="numbered-card">
-            <span class="num">2</span>
-            <p>Shape first, colour second</p>
-          </div>
-          <div class="numbered-card">
-            <span class="num">3</span>
-            <p>Difficulty climbs, never spikes</p>
-          </div>
-          <div class="numbered-card">
-            <span class="num">4</span>
-            <p>Every win goes somewhere</p>
-          </div>
-          <div class="numbered-card">
-            <span class="num">5</span>
-            <p>Limit moves, never time</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ INSIDE MIND BLOOM ============ -->
-  <section class="case-section container">
-    <div class="case-grid">
-      <span class="case-label">Inside<br>Mind Bloom</span>
-      <div class="case-col">
-        <div class="case-block">
-          <p>A walk through one round, in the order a player meets it.</p>
-        </div>
-
-        <div class="flow-diagram">
-          <div class="flow-step"><span class="flow-pill">Open your garden</span></div>
-          <div class="flow-step"><span class="flow-pill">Pick a level</span></div>
-          <div class="flow-step"><span class="flow-pill">Merge to the goal</span></div>
-          <div class="flow-step"><span class="flow-pill flow-pill--accent">Plant the reward</span></div>
-        </div>
-
-        <span class="case-tag">5.1</span>
-        <div class="case-block">
-          <h2>One goal, in words, at the top</h2>
-          <p>Every board opens with a sentence rather than a symbol - <strong>Collect 3 Clovers</strong> - and the moves you have left sit directly beside it. There is no timer, no chat, no second currency to track mid-round. The board is the only thing asking for attention.</p>
-        </div>
-        <div class="case-shot case-shot--mindbloom">
-          <img src="assets/images/mindbloom/board.webp" alt="Mind Bloom board showing the Collect 3 Clovers goal, moves remaining and a grid of daisy tiles" width="1690" height="648" loading="lazy" decoding="async">
-        </div>
-
-        <span class="case-tag">5.2</span>
-        <div class="case-block">
-          <h2>Merging up a tier</h2>
-          <p>Three of a kind become one of the next tier: daisies to ferns, ferns to clovers, clovers to a bloom. Each tier has its own silhouette, so a player who can't easily separate two greens still knows exactly what they are holding.</p>
-        </div>
-        <div class="case-shot case-shot--mindbloom">
-          <img src="assets/images/mindbloom/rounds.webp" alt="Two Mind Bloom boards showing daisy tiles merging into ferns" width="1690" height="648" loading="lazy" decoding="async">
-        </div>
-
-        <span class="case-tag">5.3</span>
-        <div class="case-block">
-          <h2>Reading your progress without leaving the board</h2>
-          <p>Progress lives in the same strip as the goal, so checking how far along you are never costs a tap. Higher tiers are drawn louder than the base tile - the thing you are working toward is always the thing that stands out.</p>
-        </div>
-        <div class="case-shot case-shot--mindbloom">
-          <img src="assets/images/mindbloom/complete.webp" alt="Mind Bloom boards showing clovers and a bloom collected against the round goal" width="1690" height="648" loading="lazy" decoding="async">
-        </div>
-
-        <span class="case-tag">5.4</span>
-        <div class="case-block">
-          <h2>Round complete, garden grows</h2>
-          <p>The completion screen itemises where every coin came from - merge rewards, completion bonus, stars - instead of flashing one total. Then the map shows the next round already unlocked, and everything just earned goes into the garden.</p>
-        </div>
-        <div class="case-shot case-shot--mindbloom">
-          <img src="assets/images/mindbloom/garden.webp" alt="Mind Bloom round complete screen with an itemised reward breakdown, next to the world map" width="1690" height="648" loading="lazy" decoding="async">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ IMPACT ============ -->
-  <section class="case-section container">
-    <div class="case-grid">
-      <span class="case-label">Impact</span>
-      <div class="case-col">
-        <div class="case-block">
-          <h2>What the design is built to move</h2>
-          <p>Mind Bloom is pre-launch, so the honest way to talk about impact is what the design is engineered to change rather than numbers it hasn't earned yet. Each of these traces back to a specific decision on the board.</p>
-        </div>
-
-        <div class="impact-stats-grid">
-          <div class="impact-stat">
-            <span class="impact-num impact-num--up">↑ Reach</span>
-            <p>one game two generations can play, with no separate "kids mode"</p>
-          </div>
-          <div class="impact-stat">
-            <span class="impact-num impact-num--down">↓ Drop-off</span>
-            <p>at the late-world rounds where a run usually ends for good</p>
-          </div>
-          <div class="impact-stat">
-            <span class="impact-num impact-num--up">↑ Return</span>
-            <p>a garden that is worth opening the app for tomorrow</p>
-          </div>
-          <div class="impact-stat">
-            <span class="impact-num impact-num--down">↓ Frustration</span>
-            <p>moves are limited, time never is, and no board opens unreadable</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ REFLECTION ============ -->
-  <section class="case-section container">
-    <div class="case-grid">
-      <span class="case-label">Reflection</span>
-      <div class="case-col">
-        <div class="case-block">
-          <h2>What stuck with me</h2>
-          <p>The instinct with a 45+ audience is to design a gentler copy of the same game - bigger text, fewer rules, an easy mode sitting off to one side. That would have made a worse game for everybody and a slightly patronising one for them. What actually worked was making a single game legible enough that nobody needs the concession: shape carrying meaning alongside colour, one goal per board, and difficulty that climbs instead of jumping. The seven-year-old benefits from every one of those decisions too.</p>
-        </div>
-
-        <blockquote class="case-quote case-quote--mindbloom">
-          Designing for a child and a grandparent at the same time forced every decision to be defensible twice - and the game got simpler each time.
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<section class="cta cta--case">
-  <div class="container">
-    <p class="mar-thanks"><span>Thanks</span> for Exploring</p>
-
-    <footer class="site-footer">
-      <h2 class="footer-ghost" aria-label="Let's Connect">
-        <span>LET'S</span>
-        <span>CONNECT</span>
-      </h2>
-
-      <div class="footer-tagline">
-        <span class="tag-1">Let's <em>Create</em><span class="accent-icon"><img src="assets/icons/abstract-accent.svg" alt="" loading="lazy" decoding="async"></span></span>
-        <span class="tag-2"><em>Amazing</em> design</span>
-      </div>
-
-      <div class="footer-row">
-        <a href="https://wa.me/919557765467?text=Hi%20Jagdish%2C%20I%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20to%20you%20about%20a%20product%20design%20role%20on%20our%20team.%20When%20would%20be%20a%20good%20time%20for%20a%20quick%20call%3F" target="_blank" rel="noopener" class="say-hello say-hello--filled">
-          Contact Now
-          <img src="assets/icons/arrow-big.svg" alt="" loading="lazy" decoding="async">
-        </a>
-
-        <div class="social-row">
-          <a href="https://www.linkedin.com/in/jagdish-bisht-475baa339/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="assets/icons/linkedin-mono.svg" alt="" loading="lazy" decoding="async"></a>
-          <a href="https://www.youtube.com/@joybishtux" target="_blank" rel="noopener" aria-label="YouTube"><img src="assets/icons/youtube.svg" alt="" loading="lazy" decoding="async"></a>
-          <a href="https://wa.me/919557765467?text=Hi%20Jagdish%2C%20I%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20to%20you%20about%20a%20product%20design%20role%20on%20our%20team.%20When%20would%20be%20a%20good%20time%20for%20a%20quick%20call%3F" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="assets/icons/whatsapp-filled.svg" alt="" loading="lazy" decoding="async"></a>
-        </div>
-
-        <div class="contact-block">
-          <span class="contact-label">Contact Now</span>
-          <a href="mailto:Bishtjagdish489@gmail.com">Bishtjagdish489@gmail.com</a>
-          <a href="tel:+919557765467">+91-955-776-5467</a>
-        </div>
-      </div>
-
-      <p class="copyright">Copyright© 2026 Jagdish Bisht. All Rights Reserved.</p>
-    </footer>
+    <div class="cs-cover rv"><img src="assets/img/mindbloom/hero.webp" alt="Mind Bloom overview" width="2560" height="800"></div>
   </div>
 </section>
 
-<script src="js/script.js?v=20260909a"></script>
+<div class="wrap cs-body">
+  <section class="cs-sec">
+    <div class="cs-side"><span class="eyebrow"><span class="num">01</span> Problem</span><h2>Built for everyone, designed for no one</h2></div>
+    <div class="cs-main rv">
+      <p>Merge games are easy to download and easy to abandon. Most are tuned for one imagined player who is young, quick and plays in short bursts. Everyone else quietly drops off.</p>
+      <div class="grid-2">
+        <div class="box"><h4>Tutorials nobody finishes</h4><p>Children skip them and older players feel talked down to. The first board has to teach by being playable.</p></div>
+        <div class="box"><h4>Targets made for young thumbs</h4><p>Small tiles and tight timers quietly shut out the 45+ player.</p></div>
+        <div class="box"><h4>A score with nowhere to go</h4><p>Coins and stars are abstract. Nothing builds into something you can point at.</p></div>
+        <div class="box"><h4>Difficulty that spikes</h4><p>One unreadable round late in a world is where most players stop for good.</p></div>
+      </div>
+      <p class="big-quote">"Make the first move obvious and the fortieth move interesting."<small>The rule I came back to every time</small></p>
+    </div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-side"><span class="eyebrow"><span class="num">02</span> Two ages</span><h2>Every decision had to work for both</h2></div>
+    <div class="cs-main rv">
+      <div class="itable">
+        <div class="row head"><div>What the two audiences need</div><div>What it changed</div></div>
+        <div class="row"><div>Players over 45 often play at arm's length, one-handed, in poor light.</div><div>Tiles differ by shape as well as colour, on targets big enough to hit without aiming.</div></div>
+        <div class="row"><div>Children replay rounds. Older players rarely do.</div><div>Rounds stay replayable, but garden rewards drop only once. Replaying is for fun, not grinding.</div></div>
+        <div class="row"><div>Both groups quit at a round they can't read, not one that's hard.</div><div>Every board opens with at least one obvious merge.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-side"><span class="eyebrow"><span class="num">03</span> Design</span><h2>One round, start to finish</h2></div>
+    <div class="cs-main">
+      <div class="rv"><h3>One goal, in words, at the top</h3><p>"Collect 3 Clovers", with moves left right beside it. No timer and no second currency. The board is the only thing asking for attention.</p><div class="shot" style="margin-top:18px"><img src="assets/img/mindbloom/board.webp" alt="Board with goal" width="1690" height="648" loading="lazy"></div></div>
+      <div class="rv" style="margin-top:48px"><h3>Merging up a tier</h3><p>Each tier has its own silhouette, so a player who can't easily tell two greens apart still knows what they're holding.</p><div class="shot" style="margin-top:18px"><img src="assets/img/mindbloom/rounds.webp" alt="Merge tiers" width="1690" height="648" loading="lazy"></div></div>
+      <div class="rv" style="margin-top:48px"><h3>Round complete, garden grows</h3><p>The completion screen breaks down where every coin came from. Then everything you earned goes into the garden.</p><div class="shot" style="margin-top:18px"><img src="assets/img/mindbloom/garden.webp" alt="Garden" width="1690" height="648" loading="lazy"></div></div>
+    </div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="cs-side"><span class="eyebrow"><span class="num">04</span> Reflection</span><h2>What stuck with me</h2></div>
+    <div class="cs-main rv">
+      <div class="reflection">
+        <p class="big-quote">Designing for a child and a grandparent at once forced every decision to hold up twice, and the game got simpler each time.</p>
+        <p style="margin-top:22px">The instinct with a 45+ audience is to build a gentler copy with an easy mode off to one side. That would have made a worse game for everyone. What worked was making one game clear enough that nobody needs the concession.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <a class="next" href="seo-landing-pages.html">
+    <span class="eyebrow">Next case study</span>
+    <span class="next-title"><b>SEO landing pages</b><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span>
+    <p>Four service pages that reached Google's top 5 in 30 days.</p>
+  </a>
+</div>
+</main>
+<section class="wrap" style="margin-top:clamp(80px,10vw,130px)">
+  <div class="cta-band rv">
+    <h2>Let's build something people use.</h2>
+    <div><p>Open to full-time Product and UX/UI roles. I usually reply the same day.</p>
+    <div class="row">
+      <a href="mailto:Bishtjagdish489@gmail.com?subject=Product%20design%20role" class="btn btn-white">Email me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <a href="https://wa.me/919557765467?text=Hi%20Jagdish%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20design%20role." target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp</a>
+    </div></div>
+  </div>
+</section>
+<footer class="footer" style="margin-top:clamp(60px,8vw,90px)">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Say hello</h4>
+        <p class="footer-big"><a href="mailto:Bishtjagdish489@gmail.com?subject=Product%20design%20role">Bishtjagdish489@gmail.com</a></p>
+        <p class="muted" style="margin-top:12px">+91 95577 65467 · Chandigarh, India</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul><li><a href="index.html">Home</a></li><li><a href="work.html">Work</a></li><li><a href="about.html">About</a></li><li><a href="playground.html">Playground</a></li></ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul><li><a href="https://www.linkedin.com/in/jagdish-bisht-475baa339/" target="_blank" rel="noopener">LinkedIn ↗</a></li><li><a href="https://wa.me/919557765467?text=Hi%20Jagdish%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20design%20role." target="_blank" rel="noopener">WhatsApp ↗</a></li><li><a href="https://www.youtube.com/@joybishtux" target="_blank" rel="noopener">YouTube ↗</a></li><li><a href="assets/Jagdish-Bisht-Resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year">2026</span> Jagdish Bisht</span><span>Designed &amp; built by me</span></div>
+  </div>
+</footer>
+<script src="js/main.js?v=5"></script>
 </body>
 </html>
