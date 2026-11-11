@@ -123,6 +123,42 @@
     }
   }
 
+
+  /* Case showcase tabs */
+  var sc = document.querySelector('.showcase');
+  if (sc) {
+    var panels = [].slice.call(sc.querySelectorAll('.case'));
+    var ctabs = [].slice.call(sc.querySelectorAll('.ctab'));
+    var ci = 0, DUR = 6000, t = null, inView = false, hovering = false;
+    function show(i) {
+      ci = (i + panels.length) % panels.length;
+      panels.forEach(function (p, k) { p.hidden = k !== ci; });
+      ctabs.forEach(function (b, k) {
+        b.setAttribute('aria-selected', k === ci ? 'true' : 'false');
+        var bar = b.querySelector('i'); if (bar) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; }
+      });
+      var row = sc.querySelector('.ctabs'), at = ctabs[ci];
+      if (row.scrollWidth > row.clientWidth) row.scrollTo({ left: at.offsetLeft - 16, behavior: 'smooth' });
+    }
+    function tick() { clearTimeout(t); if (!reduce && inView && !hovering) t = setTimeout(function () { show(ci + 1); tick(); }, DUR); }
+    sc.style.setProperty('--dur', DUR / 1000 + 's');
+    ctabs.forEach(function (b, k) { b.addEventListener('click', function () { show(k); tick(); }); });
+    sc.addEventListener('mouseenter', function () { hovering = true; sc.classList.add('paused'); clearTimeout(t); });
+    sc.addEventListener('mouseleave', function () { hovering = false; sc.classList.remove('paused'); show(ci); tick(); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { inView = es[0].isIntersecting; if (inView) { show(ci); tick(); } else clearTimeout(t); }, { threshold: 0.35 }).observe(sc);
+    if (reduce) sc.classList.add('paused');
+  }
+
+  /* Copy email */
+  document.querySelectorAll('.copy-email').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var e = b.getAttribute('data-email');
+      function done() { b.textContent = 'Copied ✓'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Copy email'; b.classList.remove('done'); }, 2000); }
+      if (navigator.clipboard) navigator.clipboard.writeText(e).then(done, function () { prompt('Email:', e); });
+      else { prompt('Email:', e); }
+    });
+  });
+
   var yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
 })();

@@ -15,36 +15,38 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/main.css?v=5">
+<link rel="stylesheet" href="css/main.css?v=10">
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","ybke4p9ocn");</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav">
   <div class="wrap nav-in">
-    <a href="index.html" class="logo" aria-label="Jagdish Bisht, home"><span class="logo-mark">JB</span><span><b>Jagdish Bisht</b><small>Product Designer</small></span></a>
-    <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
     <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="work.html">Work</a>
       <a href="about.html">About</a>
       <a href="playground.html">Playground</a>
-      <a href="assets/Jagdish-Bisht-Resume.pdf" target="_blank" rel="noopener">Resume</a>
-      <a href="mailto:Bishtjagdish489@gmail.com?subject=Product%20design%20role" class="btn btn-grad btn-sm">Hire me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <a href="#contact">Contact</a>
+      <span class="nav-mob-cta"><a href="assets/Jagdish-Bisht-Resume.pdf" target="_blank" rel="noopener">Resume</a><a href="https://wa.me/919557765467?text=Hi%20Jagdish%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20design%20role." target="_blank" rel="noopener">Hire me</a></span>
     </nav>
+    <div class="nav-right">
+      <a href="assets/Jagdish-Bisht-Resume.pdf" target="_blank" rel="noopener" class="pill-link">Resume</a>
+      <a href="https://wa.me/919557765467?text=Hi%20Jagdish%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20design%20role." target="_blank" rel="noopener" class="pill-link pill-grad">Hire me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+    </div>
   </div>
 </header>
 <main id="main">
 
 <section class="cs-hero">
   <div class="wrap">
-    <div class="chips"><span class="chip chip-live">Live</span><span class="chip">AI product · B2B SaaS</span></div>
-    <h1>A price in <span class="serif">two minutes</span> that a business can stand behind.</h1>
-    <p class="cs-lede">An AI pricing assistant that service businesses embed on their website. Visitors get an estimate, and the business gets a qualified lead.</p>
-    <div class="cs-meta">
-      <div><b>My role</b><span>Product designer: research, flows, UI, testing</span></div>
-      <div><b>Timeline</b><span>8 weeks</span></div>
-      <div><b>Platform</b><span>Web widget + B2B dashboard</span></div>
+    <div class="csh">
+      <div class="csh-l">
+      <div class="chips"><span class="chip chip-live">Live</span><span class="chip">AI product · B2B SaaS</span></div>
+      <h1>A price in <span class="serif">two minutes</span> that a business can stand behind.</h1>
+      <p class="cs-lede">An AI pricing assistant that service businesses embed on their website. Visitors get an estimate, and the business gets a qualified lead.</p>
+      </div>
     </div>
     <div class="tldr">
       <div><b>2 min</b><span>to a personalised estimate, down from a full-day quote cycle</span></div>
@@ -58,7 +60,7 @@
 
 <div class="wrap cs-body">
   <section class="cs-sec">
-    <div class="cs-side"><span class="eyebrow"><span class="num">01</span> Problem</span><h2>Why this needed building</h2></div>
+    <div class="cs-side"><h2>Why this needed building</h2></div>
     <div class="cs-main rv">
       <p>Ads were bringing visitors to a pricing page, and session recordings showed most of them leaving within seconds: no scroll, no click, no form. Every agency owner I spoke to described the same manual loop: ask for a budget, get on a call, quote something "flexible" so you're never wrong.</p>
       <div class="stat-row">
@@ -75,7 +77,7 @@
   </section>
 
   <section class="cs-sec">
-    <div class="cs-side"><span class="eyebrow"><span class="num">02</span> Key decision</span><h2>AI talks. Rules price.</h2></div>
+    <div class="cs-side"><h2>AI talks. Rules price.</h2></div>
     <div class="cs-main rv">
       <p>The riskiest assumption in a product like this is trusting a language model to come up with a price. Ask it the same thing twice and you can get two different numbers. For a tool whose whole value is trust, that rules it out.</p>
       <div class="grid-2">
@@ -87,12 +89,11 @@
   </section>
 
   <section class="cs-sec">
-    <div class="cs-side"><span class="eyebrow"><span class="num">03</span> Testing</span><h2>Two versions, one open question</h2></div>
+    <div class="cs-side"><h2>Two versions, one open question</h2></div>
     <div class="cs-main">
       <p class="rv">If you put the price behind a lead form, you get more leads, but plenty of them are fake numbers. If you don't, the business has no reason to use the tool. I designed two approaches and ran a moderated test with <b>8 participants</b> (past quote-seekers and IT founders).</p>
       <div class="decision rv">
         <div>
-          <span class="dn">V1</span>
           <h3>Single reveal</h3>
           <p>Answer six questions, enter your name and number, see the full price.</p>
         </div>
@@ -100,19 +101,18 @@
       </div>
       <div class="decision flip rv">
         <div>
-          <span class="dn">V2</span>
           <h3>Progressive reveal</h3>
           <p>After 2–3 questions a wide free range appears, with no form. Only visitors who want an exact number go on to the gate.</p>
         </div>
         <div class="shot"><img src="assets/img/devora/v2-progressive.webp" alt="Version 2 progressive reveal" width="1064" height="582" loading="lazy"></div>
       </div>
-      <div class="callout rv"><span class="eyebrow">The finding worth keeping</span>Neither version won outright. V1 is simpler to explain and faster to ship, while V2 brings in higher-intent leads. So Devora ships <b>both as an account-level setting</b>, and each business can test what converts for its own audience.</div>
+      <div class="callout rv">Neither version won outright. V1 is simpler to explain and faster to ship, while V2 brings in higher-intent leads. So Devora ships <b>both as an account-level setting</b>, and each business can test what converts for its own audience.</div>
       <div class="shot rv"><img src="assets/img/devora/v2-settings.webp" alt="Reveal mode setting in the dashboard" width="1064" height="574" loading="lazy"></div>
     </div>
   </section>
 
   <section class="cs-sec">
-    <div class="cs-side"><span class="eyebrow"><span class="num">04</span> Solution</span><h2>Two surfaces, one product</h2></div>
+    <div class="cs-side"><h2>Two surfaces, one product</h2></div>
     <div class="cs-main rv">
       <h3>The visitor's chat</h3>
       <p>One continuous chat instead of a multi-page form. Every question can be answered with one tap, and free text is always available but never the default.</p>
@@ -124,7 +124,7 @@
   </section>
 
   <section class="cs-sec">
-    <div class="cs-side"><span class="eyebrow"><span class="num">05</span> Reflection</span><h2>What stuck with me</h2></div>
+    <div class="cs-side"><h2>What stuck with me</h2></div>
     <div class="cs-main rv">
       <div class="reflection">
         <p class="big-quote">Good AI design is knowing where AI earns its place. Here that was the conversation, not the number a business stakes its reputation on.</p>
@@ -136,42 +136,37 @@
 
 <div class="wrap">
   <a class="next" href="dating-app.html">
-    <span class="eyebrow">Next case study</span>
-    <span class="next-title"><b>Dating &amp; coaching app</b><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span>
+        <span class="next-title"><b>Dating &amp; coaching app</b><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span>
     <p>Both sides of a 100K+ download relationship-coaching marketplace.</p>
   </a>
 </div>
 </main>
-<section class="wrap" style="margin-top:clamp(80px,10vw,130px)">
-  <div class="cta-band rv">
-    <h2>Let's build something people use.</h2>
-    <div><p>Open to full-time Product and UX/UI roles. I usually reply the same day.</p>
-    <div class="row">
-      <a href="mailto:Bishtjagdish489@gmail.com?subject=Product%20design%20role" class="btn btn-white">Email me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-      <a href="https://wa.me/919557765467?text=Hi%20Jagdish%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20design%20role." target="_blank" rel="noopener" class="btn btn-ghost">WhatsApp</a>
-    </div></div>
-  </div>
-</section>
-<footer class="footer" style="margin-top:clamp(60px,8vw,90px)">
+<footer class="ft" id="contact">
   <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h4>Say hello</h4>
-        <p class="footer-big"><a href="mailto:Bishtjagdish489@gmail.com?subject=Product%20design%20role">Bishtjagdish489@gmail.com</a></p>
-        <p class="muted" style="margin-top:12px">+91 95577 65467 · Chandigarh, India</p>
+    <div class="ft-card rv">
+      <div class="ft-glow" aria-hidden="true"></div>
+      <span class="pill"><span class="dot" aria-hidden="true"></span>Available for Product &amp; UX/UI roles</span>
+      <h2 class="ft-title">Have a product that<br>needs to <span class="grad-text">perform?</span></h2>
+      <div class="ft-mail">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Bishtjagdish489%40gmail.com&su=Product%20design%20role" target="_blank" rel="noopener" class="ft-email">Bishtjagdish489@gmail.com</a>
+        <button type="button" class="pill-link copy-email" data-email="Bishtjagdish489@gmail.com">Copy email</button>
       </div>
-      <div>
-        <h4>Pages</h4>
-        <ul><li><a href="index.html">Home</a></li><li><a href="work.html">Work</a></li><li><a href="about.html">About</a></li><li><a href="playground.html">Playground</a></li></ul>
-      </div>
-      <div>
-        <h4>Elsewhere</h4>
-        <ul><li><a href="https://www.linkedin.com/in/jagdish-bisht-475baa339/" target="_blank" rel="noopener">LinkedIn ↗</a></li><li><a href="https://wa.me/919557765467?text=Hi%20Jagdish%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20design%20role." target="_blank" rel="noopener">WhatsApp ↗</a></li><li><a href="https://www.youtube.com/@joybishtux" target="_blank" rel="noopener">YouTube ↗</a></li><li><a href="assets/Jagdish-Bisht-Resume.pdf" target="_blank" rel="noopener">Resume (PDF) ↗</a></li></ul>
+      <div class="ft-actions">
+        <a href="https://wa.me/919557765467?text=Hi%20Jagdish%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20design%20role." target="_blank" rel="noopener" class="pill-link pill-grad">WhatsApp me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <a href="https://www.linkedin.com/in/jagdish-bisht-475baa339/" target="_blank" rel="noopener" class="pill-link">LinkedIn</a>
+        <a href="assets/Jagdish-Bisht-Resume.pdf" target="_blank" rel="noopener" class="pill-link">Resume</a>
+        <a href="https://www.youtube.com/@joybishtux" target="_blank" rel="noopener" class="pill-link">YouTube</a>
       </div>
     </div>
-    <div class="footer-bottom"><span>© <span id="year">2026</span> Jagdish Bisht</span><span>Designed &amp; built by me</span></div>
+    <div class="ft-bottom">
+      <nav class="ft-nav" aria-label="Footer">
+        <a href="index.html">Home</a><a href="work.html">Work</a><a href="about.html">About</a><a href="playground.html">Playground</a>
+      </nav>
+      <span class="ft-meta">© <span id="year">2026</span> Jagdish Bisht · Chandigarh, India</span>
+      <a href="#" class="ft-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top ↑</a>
+    </div>
   </div>
 </footer>
-<script src="js/main.js?v=5"></script>
+<script src="js/main.js?v=7"></script>
 </body>
 </html>
